@@ -1,17 +1,21 @@
+django-reporting
+================
+
 Introduction
+------------
+
 Django Reporting System allows you to create dynamic reports for your models, consolidating and aggregating data, filtering and sorting it.
-
 It requires Django 1.3, since it uses Django's ORM aggregation.
-
 Add to existing django project
-settings.py
+
+**settings.py**
 
     INSTALLED_APPS = (
         [...]
         'myproject.reporting',
         'django.contrib.admin', # admin has to go before reporting in order to have links to the reports from the admin site
 
-urls.py
+**urls.py**
 
     from django.conf.urls.defaults import *
     from django.contrib import admin
@@ -30,7 +34,7 @@ For more details see the 'samples' directory inside repository
 Configure report
 Let's say you have the following schema:
 
-models.py:
+**models.py:**
 
     class Department(models.Model):
         [...]
@@ -49,7 +53,7 @@ models.py:
 
 in your application create a reports.py
 
-reports.py:
+**reports.py:**
 
     import reporting
     from django.db.models import Sum, Avg, Count
@@ -87,5 +91,6 @@ reports.py:
         date_hierarchy = 'birth_date' # the same as django-admin
 
     reporting.register('people', PersonReport) # Do not forget to 'register' your class in reports
+
 
 For more details see the project in the 'samples' directory in the repository
