@@ -25,9 +25,9 @@
 
   <div id="content-main">
     {% block object-tools %}{% endblock %}
-    
+
      {% block date_hierarchy %}{% report_date_hierarchy report %}{% endblock %}
-    
+
     <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
 
 
@@ -49,7 +49,7 @@
 		    </div>
 		{% endif %}
       {% endblock %}
-      
+
 
       {% block result_list %}
       <div id="changelist" class="filtered">
@@ -95,6 +95,7 @@
 								<td><strong>{{value}}</strong></td>
 							{% endif %}
 						{% endfor %}
+                        <td> </td>
 					</tr>
 				{% endif %}
 
@@ -106,6 +107,7 @@
 				{% for title, value in report.get_aggregation %}
 					<td><strong>{{title}}: {{value}}</strong></td>
 				{% endfor %}
+                <td> </td>
 			</tr>
 			{% endif %}
 			</table>

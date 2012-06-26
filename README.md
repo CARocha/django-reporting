@@ -62,6 +62,10 @@ in your application create a reports.py
     class PersonReport(reporting.Report):
         model = Person
         verbose_name = 'Person Report'
+
+        default_values = {              # Set default value to field when it is `None`
+            'department__leader': 'Anonymous',
+        }
         annotate = (                    # Annotation fields (tuples of field, func, title)
             ('id', Count, 'Total'),     # example of custom title for column
             ('salary', Sum),            # no title - column will be "Salary Sum"
