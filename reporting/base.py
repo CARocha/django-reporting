@@ -296,6 +296,9 @@ class Report(object):
             return capfirst(self.get_field(lookup).verbose_name)
         except FieldDoesNotExist:
             if '__' not in lookup and not hasattr(self, lookup):
+                if hasattr(self.model, lookup):
+                    return getattr(self.model, lookup).short_description
+
                 raise
             parts = lookup.split('__')
             return ', '.join([capfirst(i.replace('_', ' ')) for i in parts])
